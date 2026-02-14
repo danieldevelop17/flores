@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ramo de Tulipanes</title>
+
+<style>
+body{
+    background: #fce4ec;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.ramo{
+    position:relative;
+}
+
+.tulipan{
+    position:relative;
+    width:60px;
+    height:120px;
+    margin:0 10px;
+    display:inline-block;
+}
+
+.petalo{
+    width:60px;
+    height:60px;
+    background:#e91e63;
+    border-radius:50% 50% 0 0;
+    position:absolute;
+    top:0;
+}
+
+.tallo{
+    width:6px;
+    height:80px;
+    background:green;
+    position:absolute;
+    bottom:0;
+    left:27px;
+}
+
+.hoja{
+    width:40px;
+    height:20px;
+    background:green;
+    position:absolute;
+    bottom:30px;
+    left:-20px;
+    border-radius:50%;
+}
+</style>
+
+</head>
+<body>
+
+<div class="ramo">
+
+    <div class="tulipan">
+        <div class="petalo"></div>
+        <div class="tallo"></div>
+        <div class="hoja"></div>
+    </div>
+
+    <div class="tulipan">
+        <div class="petalo" style="background:#ff4081;"></div>
+        <div class="tallo"></div>
+        <div class="hoja"></div>
+    </div>
+
+    <div class="tulipan">
+        <div class="petalo" style="background:#d81b60;"></div>
+        <div class="tallo"></div>
+        <div class="hoja"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
 
