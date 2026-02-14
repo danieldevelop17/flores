@@ -123,8 +123,14 @@
     const noBtn = document.getElementById("noBtn");
 
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 100 - 50;
-      const y = Math.random() * 60 - 30;
+      const x = Math.random() * 220 - 110;   // movimiento más amplio 😆
+      const y = Math.random() * 140 - 70;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    noBtn.addEventListener("mousemove", () => {
+      const x = Math.random() * 260 - 130;   // aún más travieso ✨
+      const y = Math.random() * 160 - 80;
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
     });
 
