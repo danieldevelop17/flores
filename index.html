@@ -122,16 +122,21 @@
   <script>
     const noBtn = document.getElementById("noBtn");
 
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 220 - 110;   // movimiento más amplio 😆
-      const y = Math.random() * 140 - 70;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    document.addEventListener("mousemove", (e) => {
+      const rect = noBtn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
 
-    noBtn.addEventListener("mousemove", () => {
-      const x = Math.random() * 260 - 130;   // aún más travieso ✨
-      const y = Math.random() * 160 - 80;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      const distX = e.clientX - btnX;
+      const distY = e.clientY - btnY;
+      const distance = Math.sqrt(distX * distX + distY * distY);
+
+      if (distance < 120) { // distancia de huida 😆
+        const moveX = -distX * 0.6;
+        const moveY = -distY * 0.6;
+
+        noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
     });
 
     function openGift() {
