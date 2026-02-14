@@ -1,3 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Regalo para Estrella</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd1dc, #ff9aa2);
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2 { margin: 0; }
+    p { color: #666; }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: relative;
+    }
+
+    button {
+      padding: 6px 14px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .yes {
+      background: #ff6f91;
+      color: white;
+    }
+
+    .no {
+      background: white;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .bouquet {
+      margin-top: 20px;
+      display: none;
+      animation: appear 1.2s ease forwards;
+    }
+
+    svg {
+      margin-top: 10px;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: scale(0.8) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="question">
+      <h2>Daniel te tiene un regalo, Estrella 💝</h2>
+      <p>¿Deseas abrirlo?</p>
+
+      <div class="buttons">
+        <button class="yes" onclick="openGift()">Sí ✨</button>
+        <button class="no" id="noBtn">No 😜</button>
+      </div>
+    </div>
+
+    <div class="bouquet" id="bouquet">
+      <h2>Para ti 🌷</h2>
+
+      <svg width="240" height="220" viewBox="0 0 240 220">
         <defs>
           <linearGradient id="petal" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#ffd1dc" />
@@ -15,62 +107,75 @@
           </radialGradient>
         </defs>
 
-        <!-- Envoltura buchona elegante 💎 -->
-        <path d="M20 185 Q120 95 220 185 L180 210 Q120 160 60 210 Z" fill="url(#wrap)" />
-        <path d="M40 180 Q120 115 200 180" stroke="white" stroke-opacity="0.4" stroke-width="3" fill="none" />
+        <!-- Envoltura centrada elegante ✨ -->
+        <path d="M30 185 Q120 95 210 185 L175 210 Q120 165 65 210 Z" fill="url(#wrap)" />
+        
+        <!-- Lazo pequeño fino 🎀 -->
+        <g transform="translate(115,165) scale(0.75)">
+          <ellipse cx="-12" cy="0" rx="14" ry="9" fill="#ff6f91" />
+          <ellipse cx="12" cy="0" rx="14" ry="9" fill="#ff6f91" />
+          <circle cx="0" cy="0" r="6" fill="#ff4f87" />
+        </g>
 
-        <!-- MUCHOS Tulipanes 🌷 -->
+        <!-- Tulipanes MUY juntos 🌷 -->
 
         <!-- Fila trasera -->
-        <g opacity="0.55">
-          <g transform="translate(35,60) scale(0.9)">
-            <rect x="0" y="80" width="3" height="90" fill="#4caf50" />
-            <ellipse cx="1.5" cy="65" rx="11" ry="15" fill="url(#petal)" />
-          </g>
-          <g transform="translate(75,50) scale(0.9)">
+        <g opacity="0.45">
+          <g transform="translate(85,55) scale(0.9)">
             <rect x="0" y="90" width="3" height="90" fill="#4caf50" />
             <ellipse cx="1.5" cy="75" rx="11" ry="15" fill="url(#petal)" />
           </g>
-          <g transform="translate(115,45) scale(0.9)">
+          <g transform="translate(105,45) scale(0.9)">
+            <rect x="0" y="100" width="3" height="90" fill="#4caf50" />
+            <ellipse cx="1.5" cy="85" rx="11" ry="15" fill="url(#petal)" />
+          </g>
+          <g transform="translate(125,50) scale(0.9)">
             <rect x="0" y="95" width="3" height="90" fill="#4caf50" />
             <ellipse cx="1.5" cy="80" rx="11" ry="15" fill="url(#petal)" />
           </g>
-          <g transform="translate(155,55) scale(0.9)">
-            <rect x="0" y="85" width="3" height="90" fill="#4caf50" />
-            <ellipse cx="1.5" cy="70" rx="11" ry="15" fill="url(#petal)" />
-          </g>
         </g>
 
-        <!-- Fila frontal (principal ✨) -->
+        <!-- Fila frontal -->
         <g>
-          <g transform="translate(30,70)">
+          <g transform="translate(70,70)">
             <rect x="0" y="80" width="3" height="100" fill="#4caf50" />
             <ellipse cx="1.5" cy="60" rx="13" ry="18" fill="url(#petal)" />
             <ellipse cx="1.5" cy="50" rx="8" ry="10" fill="url(#shine)" />
+
+            <!-- Hoja -->
+            <ellipse cx="-6" cy="105" rx="8" ry="16" fill="#66bb6a" transform="rotate(-35 -6 105)" />
           </g>
 
-          <g transform="translate(65,60)">
+          <g transform="translate(90,60)">
             <rect x="0" y="90" width="3" height="100" fill="#4caf50" />
             <ellipse cx="1.5" cy="70" rx="13" ry="18" fill="url(#petal)" />
             <ellipse cx="1.5" cy="60" rx="8" ry="10" fill="url(#shine)" />
+
+            <ellipse cx="7" cy="115" rx="8" ry="16" fill="#66bb6a" transform="rotate(35 7 115)" />
           </g>
 
-          <g transform="translate(100,55)">
-            <rect x="0" y="95" width="3" height="100" fill="#4caf50" />
+          <g transform="translate(110,55)">
+            <rect x="0" y="95" width="3" height="105" fill="#4caf50" />
             <ellipse cx="1.5" cy="75" rx="13" ry="18" fill="url(#petal)" />
             <ellipse cx="1.5" cy="65" rx="8" ry="10" fill="url(#shine)" />
+
+            <ellipse cx="-6" cy="125" rx="8" ry="18" fill="#66bb6a" transform="rotate(-30 -6 125)" />
           </g>
 
-          <g transform="translate(135,60)">
+          <g transform="translate(130,60)">
             <rect x="0" y="90" width="3" height="100" fill="#4caf50" />
             <ellipse cx="1.5" cy="70" rx="13" ry="18" fill="url(#petal)" />
             <ellipse cx="1.5" cy="60" rx="8" ry="10" fill="url(#shine)" />
+
+            <ellipse cx="7" cy="115" rx="8" ry="16" fill="#66bb6a" transform="rotate(30 7 115)" />
           </g>
 
-          <g transform="translate(170,75)">
+          <g transform="translate(150,75)">
             <rect x="0" y="75" width="3" height="100" fill="#4caf50" />
             <ellipse cx="1.5" cy="55" rx="13" ry="18" fill="url(#petal)" />
             <ellipse cx="1.5" cy="45" rx="8" ry="10" fill="url(#shine)" />
+
+            <ellipse cx="-6" cy="105" rx="8" ry="16" fill="#66bb6a" transform="rotate(-40 -6 105)" />
           </g>
         </g>
       </svg>
