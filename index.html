@@ -1,121 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Ramo Mágico de Tulipanes</title>
+  <meta charset="UTF-8" />
+  <title>Regalo para Estrella</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd1dc, #ff9aa2);
+    }
 
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(to top, #fbc2eb, #a6c1ee);
-    overflow:hidden;
-}
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 320px;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* Animación flotante */
-@keyframes flotar {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
-}
+    h2 { margin: 0; }
+    p { color: #666; }
 
-/* Animación balanceo */
-@keyframes balanceo {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(3deg); }
-    100% { transform: rotate(0deg); }
-}
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: relative;
+    }
 
-.ramo{
-    display:flex;
-    gap:30px;
-    animation: flotar 4s ease-in-out infinite;
-}
+    button {
+      padding: 6px 14px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
 
-.tulipan{
-    position:relative;
-    width:80px;
-    height:180px;
-    animation: balanceo 3s ease-in-out infinite;
-}
+    .yes {
+      background: #ff6f91;
+      color: white;
+    }
 
-/* Flor */
-.petalo{
-    width:80px;
-    height:80px;
-    background:#ff4da6;
-    border-radius:50% 50% 0 0;
-    position:absolute;
-    top:0;
-    box-shadow:0 0 20px rgba(255,0,128,0.6);
-}
+    .no {
+      background: white;
+      border: 1px solid #ccc;
+      position: relative;
+    }
 
-/* Tallo */
-.tallo{
-    width:8px;
-    height:120px;
-    background:linear-gradient(to bottom, #2e7d32, #1b5e20);
-    position:absolute;
-    bottom:0;
-    left:36px;
-    border-radius:10px;
-}
+    .bouquet {
+      margin-top: 20px;
+      display: none;
+      position: relative;
+      height: 200px;
+    }
 
-/* Hoja */
-.hoja{
-    width:50px;
-    height:25px;
-    background:#43a047;
-    position:absolute;
-    bottom:50px;
-    left:-30px;
-    border-radius:50%;
-    transform:rotate(-30deg);
-}
+    .stem {
+      width: 4px;
+      height: 80px;
+      background: #4caf50;
+      margin: 0 auto;
+    }
 
-/* Texto romántico */
-.mensaje{
-    position:absolute;
-    bottom:50px;
-    font-size:24px;
-    color:white;
-    font-family:Arial;
-    text-shadow:2px 2px 10px rgba(0,0,0,0.4);
-    animation: flotar 5s ease-in-out infinite;
-}
-</style>
+    .tulip {
+      width: 26px;
+      height: 26px;
+      background: #ff6f91;
+      border-radius: 50% 50% 45% 45%;
+      margin: 0 auto;
+      box-shadow: inset -3px -4px 6px rgba(0,0,0,0.15);
+    }
 
+    .flower {
+      position: absolute;
+      bottom: 0;
+    }
+
+  </style>
 </head>
 <body>
+  <div class="card">
+    <div id="question">
+      <h2>Daniel te tiene un regalo, Estrella 💝</h2>
+      <p>¿Deseas abrirlo?</p>
 
-<div class="ramo">
-
-    <div class="tulipan">
-        <div class="petalo"></div>
-        <div class="tallo"></div>
-        <div class="hoja"></div>
+      <div class="buttons">
+        <button class="yes" onclick="openGift()">Sí ✨</button>
+        <button class="no" id="noBtn">No 😜</button>
+      </div>
     </div>
 
-    <div class="tulipan" style="animation-delay:1s">
-        <div class="petalo" style="background:#ff80ab;"></div>
-        <div class="tallo"></div>
-        <div class="hoja"></div>
+    <div class="bouquet" id="bouquet">
+      <h2>Para ti 🌷</h2>
+      <div class="flower" style="left: 30px;">
+        <div class="tulip"></div>
+        <div class="stem"></div>
+      </div>
+      <div class="flower" style="left: 90px;">
+        <div class="tulip"></div>
+        <div class="stem"></div>
+      </div>
+      <div class="flower" style="left: 150px;">
+        <div class="tulip"></div>
+        <div class="stem"></div>
+      </div>
+      <div class="flower" style="left: 210px;">
+        <div class="tulip"></div>
+        <div class="stem"></div>
+      </div>
     </div>
+  </div>
 
-    <div class="tulipan" style="animation-delay:2s">
-        <div class="petalo" style="background:#f50057;"></div>
-        <div class="tallo"></div>
-        <div class="hoja"></div>
-    </div>
+  <script>
+    const noBtn = document.getElementById("noBtn");
 
-</div>
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 100 - 50;
+      const y = Math.random() * 60 - 30;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
 
-<div class="mensaje">
-    🌷 Un ramo especial para ti 🌷
-</div>
-
+    function openGift() {
+      document.getElementById("question").style.display = "none";
+      document.getElementById("bouquet").style.display = "block";
+    }
+  </script>
 </body>
 </html>
